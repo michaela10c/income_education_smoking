@@ -8,6 +8,10 @@ missing-value-analysis
 cleaning-transformation
 results
 data-exploration
+population-density
+education-percentage-with-college-degrees
+smoking
+cancer
 relationship-between-variables
 interactive-component
 conclusion
