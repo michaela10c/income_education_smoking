@@ -1,6 +1,55 @@
 # Proposal
 
-## Research topic
+## Research topic + Hypotheses
+
+The claim that smoking leads to cancer is well-documented. From the 1930s to 1950s, cigarette smoking was imbued in American culture. Media outlets such as billboard posters and TV commercials convinced people to smoke cigarettes, and a copious amount of Americans smoked. In 1964, the first major report smoking and health came from Surgeon General Luther Terry's finding that revealed the harmful effects of smoking on lung cancer and heart disease. Years later in 1971, President Richard Nixon issued a ban on cigarette commercials on TV. Many anti-smoking compaigns followed, and cigarette smoking started declining steadily. [Link to Reference](https://nap.nationalacademies.org/read/11795/chapter/4). 
+
+There has been studies that show that that cigarette smoking is linked with income and education levels. One such study that conveys this is shown in [this video](https://www.youtube.com/watch?v=QBht72_PA-4), which uses data from the IARC (International Agency for Research on Cancer), and shows that low income countries cannot afford cigarettes and hence have low smoking rates; middle income countries have highest consumption of smoking since they do not have adequate education regulations; high income countries are better able to afford higher education, and have a lower smoking rate. Education also plays a vital role in terms of keeping people from smoking, as those that are well-educated are much less likely to be smokers, as shown by [this study](https://truthinitiative.org/research-resources/targeted-communities/economics-tobacco-what-education-and-income-tell-us-about) and [this study](https://journals.lww.com/oncology-times/fulltext/2014/06250/cdc_data__cigarette_smoking_by_education_level_and.26.aspx). 
+In this project, we not only corroborate the relationship between smoking and cancer in the 50 US states, we also want to corroborate the claims above by exploring the statistical relationships between average income, education level, smoking rates, and cancer rates per US state. How do different household income levels affect the proportion of smokers? How does education affect the proportion of smokers? Why do certain US regions have a higher proportion of smokers than others? Why do certain regions have a higher income or more education than others? 
+
+This project also serves as a reminder for the audience to stay away from cigarette smoking at all times, regardless of background such as income level or education. 
 
 ## Data availability
 
+In this project, we are using four datasets: [Educational Attainment by US State](https://worldpopulationreview.com/state-rankings/educational-attainment-by-state),  [Average Income by US State](https://worldpopulationreview.com/state-rankings/average-income-by-state ), [Average] [Smoking Rates by US State](https://worldpopulationreview.com/state-rankings/smoking-rates-by-state ), and [Cancer Rates by US State](https://worldpopulationreview.com/state-rankings/cancer-rates-by-state ). All four datasets are collected from [World Population Review](https://worldpopulationreview.com/), but collected via separate links. 
+
+All four datasets are collected via web-scraping. The data on Educational Attainment uses two sources: [US Census 2020 ACS 5-Year Survey](https://data.census.gov/table?tid=ACSST5Y2020.S1501&g=0100000US$0400000) and [Educational Attainment in the United States: 2018](https://www.census.gov/data/tables/2018/demo/education-attainment/cps-detailed-tables.html). The data on Average Income is collected from [US Census 2020 ACS 5-Year Survey (Table S1901)](https://data.census.gov/table?tid=ACSST5Y2020.S1901&g=0100000US$0400000) and [Per Capita Personal Income by State](https://apps.bea.gov/iTable/?reqid=70&step=1&acrdn=2). The data on Smoking Rates is collected from [American Health Rankings 2020](https://www.americashealthrankings.org/explore/annual). The data on Cancer Rates is collected from the Centers for Disease Control and Prevention ([CDC](https://gis.cdc.gov/Cancer/USCS/DataViz.html)). While the actual year the datasets were collected may be slightly different, World Population Review makes sure that the latest data is scraped from its corresponding primary sources, and there is not much difference when we analyze data within the same time frame.
+
+We chose to download these datasets mainly because they come from the same website, and is therefore very convenient to amalgamate together for analysis with very little preprocessing. This also allows modular design, as we can associate each dataset as an indicator to study. 
+
+The following columns are present in all four datasets:
+
+* `fips` (FIPS state code)
+* `state` (US state name)
+* `densityMi` (population density per square-mile)
+* `pop2023` (2023 population)
+* `pop2022` (2022 population)
+* `pop2020` (2020 population)
+* `pop2019` (2019 population)
+* `pop2010` (2010 population)
+* `growthRate` (population growth rate since 2019)
+* `growth` (population growth)
+* `growthSince2010` (population growth rate since 2010)
+
+The following additional columns are present in the Average Income data:
+
+*  `HouseholdIncome` (average household income in $)
+*  `HouseholdMedianIncome` (median household income in $)
+
+The following additional columns are present in the Education Attainment data:
+
+*  `PercentHighSchoolOrHigher` (% of population that with high school diplomas)
+*  `PercentBachelorsOrHigher` (% of population that with college diplomas)
+
+The following additional columns are present in the Smoking Rates data:
+
+*  `smokingRate` (% of adults smoking)
+
+The following additional columns are present in the Cancer Rates data:
+
+*  `ageAdjustedRate` (# of cancer cases per 100K people)
+*  `caseCount` (absolute # of cancer cases)
+
+We use the `state` column, the `HouseholdIncome` column from the Average Income data, the `PercentHighSchoolOrHigher` and `PercentBachelorsOrHigher` columns from the Education Attainment data, the `smokingRate` column from the Smoking Rates data, and the `ageAdjustedRate` column from the Cancer Rates data. 
+
+Population indicators such as `densityMi` (population density), `pop2023`, `pop2022`, `pop2020`, `pop2019`, `pop2010`, `growthRate`, `growth`, and `growthSince2010`, which are present in all four datasets, are irrelevant for our analysis. 

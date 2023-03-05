@@ -1,0 +1,209 @@
+# Extraneous graphs
+
+These are some graphs we considered, but ultimately did not decide to have, since they do not best contribute to the overall story. While these graphs do show the distribution data of each variable, we are more interested in analyzing each region geographically with respect to each variable. 
+
+Income (Average and Median):
+```{r fig.height = 5, fig.width = 5}
+df %>%
+  ggplot(aes(x = fct_reorder(abb, HouseholdAverageIncome), y = HouseholdAverageIncome / 1000)) +
+  geom_col(width = 0.7) +
+  ggtitle("Average Household Income") +
+  xlab("State") +
+  ylab("Average Household Income (Thousands of Dollars)") +
+  geom_bar(stat = "identity") +
+  coord_flip()
+
+
+df %>%
+  ggplot(aes(x = fct_reorder(abb, HouseholdMedianIncome), y = HouseholdMedianIncome / 1000)) +
+  geom_col(width = 0.7) +
+  ggtitle("Median Household Income") +
+  xlab("State") +
+  ylab("Median Household Income (Thousands of Dollars)") +
+  geom_bar(stat = "identity") +
+  coord_flip()
+```
+
+
+Education (percentage with high school or college degrees):
+```{r fig.height = 5, fig.width = 5}
+df %>%
+  ggplot(aes(x = fct_reorder(abb, PercentHighSchoolOrHigher), y = PercentHighSchoolOrHigher)) +
+  geom_col(width = 0.7) +
+  ggtitle("Education Attainment: High School") +
+  xlab("State") +
+  ylab("Percentage with High School Degrees") +
+  geom_bar(stat = "identity") +
+  coord_flip()
+
+df %>%
+  ggplot(aes(x = fct_reorder(abb, PercentBachelorsOrHigher), y = PercentBachelorsOrHigher)) +
+  ggtitle("Education Attainment: College") +
+  xlab("State") +
+  ylab("Proportion with College Degrees") +
+  geom_bar(stat="identity") +
+  coord_flip()
+```
+
+
+
+
+
+Smoking:
+```{r fig.height = 5, fig.width = 5}
+df %>%
+  ggplot(aes(x = fct_reorder(abb, smokingPercentage), y = smokingPercentage)) +
+  ggtitle("Smoking Rates") +
+  xlab("State") +
+  ylab("Smoking Percentage") +
+  geom_bar(stat="identity") +
+  coord_flip()
+```
+
+
+Cancer:
+```{r fig.height = 5, fig.width = 5}
+df %>%
+  ggplot(aes(x = fct_reorder(abb, cancerCasesPer100K), y =cancerCasesPer100K)) +
+  ggtitle("Cancer Rates") +
+  xlab("State") +
+  ylab("Cancer Cases per 100K people") +
+  geom_bar(stat="identity") +
+  coord_flip()
+```
+
+Let's look at the distribution of each of the indicators:
+
+Income (Average and Median):
+```{r fig.width=10, fig.height=10}
+df %>%
+  ggplot() +
+  geom_point(aes(x = fct_reorder(abb, HouseholdAverageIncome), y = HouseholdAverageIncome / 1000, colour = "Mean")) + 
+  geom_point(aes(x = fct_reorder(abb, HouseholdMedianIncome), y = HouseholdMedianIncome / 1000, colour = "Median")) + 
+  ggtitle("Household Income: Mean and Median") +
+  xlab("State") +
+  ylab("Household Income (Thousands of Dollars)") +  
+  labs(color='Statistic') + 
+  coord_flip() 
+```
+
+We can see that the mean and median have very similar distributions, with the mean being higher than the median (since we have a few outliers in each state that are extremely rich).
+
+Education (proportion with high school or college degrees):
+```{r fig.width=10, fig.height=10}
+df %>%
+  ggplot() +
+  geom_point(aes(x = fct_reorder(abb, PercentBachelorsOrHigher), y = PercentBachelorsOrHigher, colour = "College")) + 
+  geom_point(aes(x = fct_reorder(abb, PercentHighSchoolOrHigher), y = PercentHighSchoolOrHigher, colour = "High School")) + 
+  ggtitle("Percentage of Population with High School / College Degree") +
+  xlab("State") +
+  ylab("%") + 
+  labs(color='Type of Degree') +
+  coord_flip() 
+```
+
+We see here way more people get their high school diplomas than college diplomas, since fewer people can afford to go to college compared to high school. The distributions themselves, however, do not look very similar to each other. 
+
+We can plot two separate Cleveland dot plots for High School and College, taking the top 5 and bottom 5: 
+
+```{r fig.width=10, fig.height=10}
+g1 <- df %>%
+  arrange(desc(PercentHighSchoolOrHigher)) %>% 
+  slice(1:5) %>%
+  ggplot() +
+  geom_point(aes(x = fct_reorder(abb, PercentHighSchoolOrHigher), y = PercentHighSchoolOrHigher)) + 
+  ggtitle("Percentage of Population with High School Degree: Top 5") +
+  xlab("State") +
+  ylab("%") + 
+  coord_flip() 
+
+g2 <- df %>%
+  arrange(PercentHighSchoolOrHigher) %>% 
+  slice(1:5) %>%
+  ggplot() +
+  geom_point(aes(x = fct_reorder(abb, PercentHighSchoolOrHigher) %>% fct_rev(), y = PercentHighSchoolOrHigher)) + 
+  ggtitle("Percentage of Population with High School Degree: Bottom 5") +
+  xlab("State") +
+  ylab("%") +
+  coord_flip() 
+
+grid.arrange(g1, g2, ncol = 1)
+```
+
+
+```{r fig.width=10, fig.height=10}
+g1 <- df %>%
+  arrange(desc(PercentBachelorsOrHigher)) %>% 
+  slice(1:5) %>%
+  ggplot() +
+  geom_point(aes(x = fct_reorder(abb, PercentBachelorsOrHigher), y = PercentBachelorsOrHigher)) + 
+  ggtitle("Percentage of Population with College Degree: Top 5") +
+  xlab("State") +
+  ylab("%") + 
+  coord_flip() 
+
+g2 <- df %>%
+  arrange(PercentBachelorsOrHigher) %>% 
+  slice(1:5) %>%
+  ggplot() +
+  geom_point(aes(x = fct_reorder(abb, PercentBachelorsOrHigher) %>% fct_rev(), y = PercentBachelorsOrHigher)) + 
+  ggtitle("Percentage of Population with College Degree: Bottom 5") +
+  xlab("State") +
+  ylab("%") +
+  coord_flip() 
+
+grid.arrange(g1, g2, ncol = 1)
+```
+
+
+Smoking:
+```{r fig.width=10, fig.height=10}
+g1 <- df %>%
+  arrange(desc(smokingPercentage)) %>% 
+  slice(1:5) %>% 
+  ggplot() +
+  geom_point(aes(x = fct_reorder(abb, smokingPercentage), y = smokingPercentage)) + 
+  ggtitle("Percentage of Population Smoking") +
+  xlab("State") +
+  ylab("%") +
+  coord_flip() 
+
+g2 <- df %>%
+  arrange(smokingPercentage) %>% 
+  slice(1:5) %>% 
+  ggplot() +
+  geom_point(aes(x = fct_reorder(abb, smokingPercentage) %>% fct_rev(), y = smokingPercentage)) + 
+  ggtitle("Percentage of Population Smoking") +
+  xlab("State") +
+  ylab("%") +
+  coord_flip() 
+
+grid.arrange(g1, g2, ncol = 1)
+```
+
+Cancer:
+```{r fig.width=10, fig.height=10}
+ g1 <- df %>%
+  arrange(desc(cancerCasesPer100K)) %>% 
+  slice(1:5) %>% 
+  ggplot() +
+  geom_point(aes(x = fct_reorder(abb, cancerCasesPer100K), y = cancerCasesPer100K)) + 
+  ggtitle("Cancer Rates") + 
+  xlab("State") +
+  ylab("# of Cases per 100K Population") +
+  coord_flip()
+
+g2 <- df %>%
+  arrange(cancerCasesPer100K) %>% 
+  slice(1:5) %>% 
+  ggplot() +
+  geom_point(aes(x = fct_reorder(abb, cancerCasesPer100K) %>% fct_rev(), y = cancerCasesPer100K)) + 
+  ggtitle("Cancer Rates") + 
+  xlab("State") +
+  ylab("# of Cases per 100K Population") +
+  coord_flip()
+
+grid.arrange(g1, g2, ncol = 1)
+```
+
+We see that the Kentucky and West Virginia have the highest smoking and cancer rates. This is understandable, since we see that WV and KY are last and fourth-to-last in college education rates. 
