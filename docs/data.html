@@ -136,13 +136,13 @@
 <h2><span class="header-section-number">3.2</span> Missing value analysis<a href="data.html#missing-value-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We first analyze whether there are any missing values in each of the datasets. We see that there are no missing data in either of the four datasets.</p>
 <p>Income data:
-<img src="finalproj_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Education data:
 <img src="finalproj_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>Smoking data:
+<p>Education data:
 <img src="finalproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>Cancer data:
+<p>Smoking data:
 <img src="finalproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Cancer data:
+<img src="finalproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 <div id="cleaning-transformation" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Cleaning / transformation<a href="data.html#cleaning-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -151,39 +151,6 @@
 <p>The <code>ageAdjustedRate</code>, <code>smokingRate</code>, <code>HouseholdIncome</code>, and <code>densityMi</code> columns are renamed to <code>cancerCasesPer100K</code>, <code>smokingPercentage</code>, <code>HouseholdAverageIncome</code>, and <code>popDensity</code> for clarity.</p>
 <p>Population indicators such as <code>pop2023</code>, <code>pop2022</code>, <code>pop2020</code>, <code>pop2019</code>, <code>pop2010</code>, <code>growthRate</code>, <code>growth</code>, and <code>growthSince2010</code>, which are present in all four datasets, are irrelevant and omitted from our analysis. The absolute populations are not normalized, and the population growth metrics are irrelevant for this analysis.</p>
 <p>We also removed District of Columbia since it is not an official state.</p>
-<pre><code>##          state popDensity HouseholdAverageIncome HouseholdMedianIncome
-## 1      Alabama  100.65438                  71964                 52035
-## 2       Alaska    1.29738                  98811                 77790
-## 3      Arizona   64.96246                  84380                 61529
-## 4     Arkansas   58.42619                  69357                 49475
-## 5   California  258.20877                 111622                 78672
-## 6     Colorado   57.86332                 100933                 75231
-## 7  Connecticut  746.69537                 115337                 79855
-## 8     Delaware  522.08876                  92308                 69110
-## 9      Florida  416.95573                  83104                 57703
-## 10     Georgia  191.59470                  85691                 61224
-##    PercentHighSchoolOrHigher PercentBachelorsOrHigher smokingPercentage
-## 1                       86.9                     26.2              20.2
-## 2                       93.1                     30.0              17.4
-## 3                       87.9                     30.3              14.9
-## 4                       87.2                     23.8              20.2
-## 5                       83.9                     34.7              10.0
-## 6                       92.1                     41.6              13.5
-## 7                       90.9                     40.0              12.1
-## 8                       90.6                     32.7              15.9
-## 9                       88.5                     30.5              14.8
-## 10                      87.9                     32.2              16.3
-##    cancerCasesPer100K abb
-## 1               446.9  AL
-## 2               404.5  AK
-## 3               374.9  AZ
-## 4               471.4  AR
-## 5               392.4  CA
-## 6               394.3  CO
-## 7               464.7  CT
-## 8               446.7  DE
-## 9               426.1  FL
-## 10              461.3  GA</code></pre>
 
 </div>
 </div>
