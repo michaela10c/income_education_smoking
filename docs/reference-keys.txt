@@ -13,7 +13,7 @@ education-percentage-with-college-degrees
 smoking
 cancer
 relationship-between-variables
-interactive-component
+interactive-component-summary-of-correlations
 conclusion
 exploration
 limitations
