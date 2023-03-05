@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Zhou" />
 
 
-<meta name="date" content="2023-03-04" />
+<meta name="date" content="2023-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -95,7 +95,7 @@
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#relationship-between-variables"><i class="fa fa-check"></i><b>4.2</b> Relationship between Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive component</a></li>
+<li class="chapter" data-level="5" data-path="interactive-component-summary-of-correlations.html"><a href="interactive-component-summary-of-correlations.html"><i class="fa fa-check"></i><b>5</b> Interactive Component: Summary of Correlations</a></li>
 <li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="conclusion.html"><a href="conclusion.html#exploration"><i class="fa fa-check"></i><b>6.1</b> Exploration</a></li>
@@ -126,28 +126,52 @@
 <div id="extraneous-graphs" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">Chapter 7</span> Extraneous graphs<a href="extraneous-graphs.html#extraneous-graphs" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>These are some graphs we considered, but ultimately did not decide to have, since they do not best contribute to the overall story. While these graphs do show the distribution data of each variable, we are more interested in analyzing each region geographically with respect to each variable.</p>
+<pre><code>## [
+##   {
+##     &quot;state&quot;: &quot;AK&quot;,
+##     &quot;value&quot;: 1.2974
+##   },
+##   {
+##     &quot;state&quot;: &quot;WY&quot;,
+##     &quot;value&quot;: 5.9821
+##   },
+##   {
+##     &quot;state&quot;: &quot;MT&quot;,
+##     &quot;value&quot;: 7.6448
+##   },
+##   {
+##     &quot;state&quot;: &quot;ND&quot;,
+##     &quot;value&quot;: 11.7541
+##   },
+##   {
+##     &quot;state&quot;: &quot;SD&quot;,
+##     &quot;value&quot;: 11.9826
+##   }
+## ]</code></pre>
+<p>Population Density:
+<img src="finalproj_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>Income (Average and Median):
-<img src="finalproj_files/figure-html/unnamed-chunk-23-1.png" width="480" /><img src="finalproj_files/figure-html/unnamed-chunk-23-2.png" width="480" /></p>
+<img src="finalproj_files/figure-html/unnamed-chunk-25-1.png" width="480" /><img src="finalproj_files/figure-html/unnamed-chunk-25-2.png" width="480" /></p>
 <p>Education (percentage with high school or college degrees):
-<img src="finalproj_files/figure-html/unnamed-chunk-24-1.png" width="480" /><img src="finalproj_files/figure-html/unnamed-chunk-24-2.png" width="480" /></p>
+<img src="finalproj_files/figure-html/unnamed-chunk-26-1.png" width="480" /><img src="finalproj_files/figure-html/unnamed-chunk-26-2.png" width="480" /></p>
 <p>Smoking:
-<img src="finalproj_files/figure-html/unnamed-chunk-25-1.png" width="480" /></p>
+<img src="finalproj_files/figure-html/unnamed-chunk-27-1.png" width="480" /></p>
 <p>Cancer:
-<img src="finalproj_files/figure-html/unnamed-chunk-26-1.png" width="480" /></p>
+<img src="finalproj_files/figure-html/unnamed-chunk-28-1.png" width="480" /></p>
 <p>Let’s look at the distribution of each of the indicators:</p>
 <p>Income (Average and Median):
-<img src="finalproj_files/figure-html/unnamed-chunk-27-1.png" width="960" /></p>
+<img src="finalproj_files/figure-html/unnamed-chunk-29-1.png" width="960" /></p>
 <p>We can see that the mean and median have very similar distributions, with the mean being higher than the median (since we have a few outliers in each state that are extremely rich).</p>
 <p>Education (proportion with high school or college degrees):
-<img src="finalproj_files/figure-html/unnamed-chunk-28-1.png" width="960" /></p>
+<img src="finalproj_files/figure-html/unnamed-chunk-30-1.png" width="960" /></p>
 <p>We see here way more people get their high school diplomas than college diplomas, since fewer people can afford to go to college compared to high school. The distributions themselves, however, do not look very similar to each other.</p>
 <p>We can plot two separate Cleveland dot plots for High School and College, taking the top 5 and bottom 5:</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-29-1.png" width="960" /></p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-30-1.png" width="960" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-31-1.png" width="960" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-32-1.png" width="960" /></p>
 <p>Smoking:
-<img src="finalproj_files/figure-html/unnamed-chunk-31-1.png" width="960" /></p>
+<img src="finalproj_files/figure-html/unnamed-chunk-33-1.png" width="960" /></p>
 <p>Cancer:
-<img src="finalproj_files/figure-html/unnamed-chunk-32-1.png" width="960" /></p>
+<img src="finalproj_files/figure-html/unnamed-chunk-34-1.png" width="960" /></p>
 <p>We see that the Kentucky and West Virginia have the highest smoking and cancer rates. This is understandable, since we see that WV and KY are last and fourth-to-last in college education rates.</p>
 
 </div>
