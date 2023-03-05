@@ -26,7 +26,7 @@ df %>%
 ```
 
 
-Income (Average and Median):
+Average Income:
 ```{r fig.height = 5, fig.width = 5}
 df %>%
   ggplot(aes(x = fct_reorder(abb, HouseholdAverageIncome), y = HouseholdAverageIncome / 1000)) +
@@ -36,8 +36,10 @@ df %>%
   ylab("Average Household Income (Thousands of Dollars)") +
   geom_bar(stat = "identity") +
   coord_flip()
+```
 
-
+Median Income:
+```{r}
 df %>%
   ggplot(aes(x = fct_reorder(abb, HouseholdMedianIncome), y = HouseholdMedianIncome / 1000)) +
   geom_col(width = 0.7) +
@@ -49,27 +51,29 @@ df %>%
 ```
 
 
-Education (percentage with high school or college degrees):
+
+High School Education:
 ```{r fig.height = 5, fig.width = 5}
 df %>%
   ggplot(aes(x = fct_reorder(abb, PercentHighSchoolOrHigher), y = PercentHighSchoolOrHigher)) +
   geom_col(width = 0.7) +
   ggtitle("Education Attainment: High School") +
   xlab("State") +
-  ylab("Percentage with High School Degrees") +
+  ylab("Proportion with High School Degrees (%)") +
   geom_bar(stat = "identity") +
   coord_flip()
+```
 
+College Education:
+```{r}
 df %>%
   ggplot(aes(x = fct_reorder(abb, PercentBachelorsOrHigher), y = PercentBachelorsOrHigher)) +
   ggtitle("Education Attainment: College") +
   xlab("State") +
-  ylab("Proportion with College Degrees") +
+  ylab("Proportion with College Degrees (%)") +
   geom_bar(stat="identity") +
   coord_flip()
 ```
-
-
 
 
 
