@@ -1,4 +1,4 @@
-# Interactive Component: Summary of Correlations 
+# Interactive Component
 
 Below are the top or bottom 5 US states for each indicator:
 

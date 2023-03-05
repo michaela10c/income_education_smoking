@@ -4,7 +4,7 @@
 
 Let's take a look at each variable separately by each region:
 
-### Population density:
+### Population density
 ```{r}
 library(maps)
 library(usmap)
@@ -31,7 +31,7 @@ plot_usmap(data = df, values = "HouseholdMedianIncome", color = "black") +
 We can see that the mean and median incomes are very similarly distributed, with the mean being substantially higher than the median likely due to outliers -- there are exceptionally rich people in almost every state. We can see that the northeast regions has the highest income, mostly due to the abundance of economic resources, such as education, employment, and trade routes. We also see high hosuehold income in states like California and Washington, as they are home to employment opportunities especially the major tech industries (Google, Facebook, Amazon, etc.). States mostly dominated by working-class such as [West Virginia](https://www.cnn.com/2016/09/20/politics/election-2016-white-working-class-donald-trump-kaiser-family-foundation/index.html) and [Mississippi](https://www.cnbc.com/2022/07/13/workforce-makes-mississippi-americas-worst-state-for-business.html), have the lowest mean and median income. 
 
 
-### Education (percentage with college degrees):
+### Education (percentage with college/high school degrees)
 ```{r}
 plot_usmap(data = df, values = "PercentBachelorsOrHigher", color = "black") +
   scale_fill_continuous(low = "white", high = "blue",name = "Percentage with Bachelor's Degree (%)", label = scales::comma) + 
@@ -46,7 +46,7 @@ We can see that the most educated areas in terms of college attainment are in th
 
 For high school attainment, we see the largest states, California and Texas, has the lowest high school graduation rate, mostly due to income inequality issues [link](https://www.ppic.org/publication/income-inequality-in-california/#:~:text=Income%20inequality%20is%20a%20major%20concern%20in%20California.&text=Families%20at%20the%20top%20of,and%2010th%20percentiles%2C%20respectively), [link](https://www.cbpp.org/sites/default/files/atoms/files/Texas.pdf)). Most of the US states have very similar high school graduation rates. 
 
-### Smoking:
+### Smoking
 ```{r}
 plot_usmap(data = df, values = "smokingPercentage", color = "black") +
   scale_fill_continuous(low = "white", high = "darkred",name = "Smoking Rate (%)", label = scales::comma) + 
@@ -55,7 +55,7 @@ plot_usmap(data = df, values = "smokingPercentage", color = "black") +
 
 We can see that the smoking rates for West Virginia, Kentucky, and Louisiana are the highest. In prior heat maps, we've shown that West Virginia has one of the lowest household income and college education rates, as it is mostly dominated by working class. In fact, the 12 "Tobacco Nation" states (Alabama, Arkansas, Indiana, Kentucky, Louisiana, Michigan, Mississippi, Missouri, Ohio, Oklahoma, Tennessee, and West Virginia) all have a high smoking rate, as they share the similar challenges of low income, a paucity of infrastructure and health-care resources, as well as a lack of anti-tobacco policies according to [this article](https://truthinitiative.org/tobacconation). Utah has the lowest smoking rate, partly due to a large [religious population](https://news.gallup.com/poll/167771/smoking-rate-lowest-utah-highest-kentucky.aspx). 
 
-### Cancer:
+### Cancer
 ```{r}
 plot_usmap(data = df, values = "cancerCasesPer100K", color = "black") +
   scale_fill_continuous(low = "white", high = "darkred",name = "Cancer Cases (per 100K pop.)", label = scales::comma) + 
