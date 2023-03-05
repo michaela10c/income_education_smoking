@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="data.html"/>
-<link rel="next" href="interactive-component-summary-of-correlations.html"/>
+<link rel="next" href="interactive-component.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -88,14 +88,14 @@
 <ul>
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#data-exploration"><i class="fa fa-check"></i><b>4.1</b> Data Exploration</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#population-density"><i class="fa fa-check"></i><b>4.1.1</b> Population density:</a></li>
-<li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#education-percentage-with-college-degrees"><i class="fa fa-check"></i><b>4.1.2</b> Education (percentage with college degrees):</a></li>
-<li class="chapter" data-level="4.1.3" data-path="results.html"><a href="results.html#smoking"><i class="fa fa-check"></i><b>4.1.3</b> Smoking:</a></li>
-<li class="chapter" data-level="4.1.4" data-path="results.html"><a href="results.html#cancer"><i class="fa fa-check"></i><b>4.1.4</b> Cancer:</a></li>
+<li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#population-density"><i class="fa fa-check"></i><b>4.1.1</b> Population density</a></li>
+<li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#education-percentage-with-collegehigh-school-degrees"><i class="fa fa-check"></i><b>4.1.2</b> Education (percentage with college/high school degrees)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="results.html"><a href="results.html#smoking"><i class="fa fa-check"></i><b>4.1.3</b> Smoking</a></li>
+<li class="chapter" data-level="4.1.4" data-path="results.html"><a href="results.html#cancer"><i class="fa fa-check"></i><b>4.1.4</b> Cancer</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#relationship-between-variables"><i class="fa fa-check"></i><b>4.2</b> Relationship between Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="interactive-component-summary-of-correlations.html"><a href="interactive-component-summary-of-correlations.html"><i class="fa fa-check"></i><b>5</b> Interactive Component: Summary of Correlations</a></li>
+<li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive Component</a></li>
 <li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="conclusion.html"><a href="conclusion.html#exploration"><i class="fa fa-check"></i><b>6.1</b> Exploration</a></li>
@@ -129,26 +129,26 @@
 <h2><span class="header-section-number">4.1</span> Data Exploration<a href="results.html#data-exploration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s take a look at each variable separately by each region:</p>
 <div id="population-density" class="section level3 hasAnchor" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Population density:<a href="results.html#population-density" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.1.1</span> Population density<a href="results.html#population-density" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="finalproj_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>We can see that the <a href="https://en.wikipedia.org/wiki/New_England">New England</a> region has a significantly higher population density than the rest of the United States, considering that the first American colonists settled in this region, and resources such as trade routes, education and employment opportunities are most abundant there. States that also have large population densities include California, Florida, New York, as well as midwest states. States such as Alaska, Montana, Wyoming, etc. are mostly wilderness and rural regions, and do not have a high population density.</p>
 <p>Income (Average and Median):
 <img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-13-2.png" width="672" />
 We can see that the mean and median incomes are very similarly distributed, with the mean being substantially higher than the median likely due to outliers – there are exceptionally rich people in almost every state. We can see that the northeast regions has the highest income, mostly due to the abundance of economic resources, such as education, employment, and trade routes. We also see high hosuehold income in states like California and Washington, as they are home to employment opportunities especially the major tech industries (Google, Facebook, Amazon, etc.). States mostly dominated by working-class such as <a href="https://www.cnn.com/2016/09/20/politics/election-2016-white-working-class-donald-trump-kaiser-family-foundation/index.html">West Virginia</a> and <a href="https://www.cnbc.com/2022/07/13/workforce-makes-mississippi-americas-worst-state-for-business.html">Mississippi</a>, have the lowest mean and median income.</p>
 </div>
-<div id="education-percentage-with-college-degrees" class="section level3 hasAnchor" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Education (percentage with college degrees):<a href="results.html#education-percentage-with-college-degrees" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="education-percentage-with-collegehigh-school-degrees" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Education (percentage with college/high school degrees)<a href="results.html#education-percentage-with-collegehigh-school-degrees" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="finalproj_files/figure-html/unnamed-chunk-14-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
 <p>We can see that the most educated areas in terms of college attainment are in the northeast, as well as Colorado. It is not a surprise that the northeast region has the highest proportion of college attainment, as it is the home to prestigious colleges such as Ivy League schools as well as the <a href="https://en.wikipedia.org/wiki/First_university_in_the_United_States#:~:text=Harvard%20University%2C%20founded%20in%201636,education%20in%20the%20United%20States%22.">oldest universities of America</a>. We see that Colorado also has a very high college attainment rate, as shown in <a href="https://www.denverpost.com/2021/02/16/colorado-most-educated-states-wallethub/">this article</a>, which is mostly because college is becoming <a href="https://www.rmpbs.org/blogs/news/how-did-colorado-community-colleges-double-their-graduation-rate-by-better-meeting-student-needs/">more affordable</a> in the state. We see that West Virginia has the lowest higher education rate, as much of the labor force is cheap and do not require a college degree as described <a href="https://www.wboy.com/only-on-wboy-com/wboy-com-lists-and-rankings/study-ranks-west-virginia-last-in-education/">here</a>.</p>
 <p>For high school attainment, we see the largest states, California and Texas, has the lowest high school graduation rate, mostly due to income inequality issues <a href="https://www.ppic.org/publication/income-inequality-in-california/#:~:text=Income%20inequality%20is%20a%20major%20concern%20in%20California.&amp;text=Families%20at%20the%20top%20of,and%2010th%20percentiles%2C%20respectively">link</a>, <a href="https://www.cbpp.org/sites/default/files/atoms/files/Texas.pdf">link</a>). Most of the US states have very similar high school graduation rates.</p>
 </div>
 <div id="smoking" class="section level3 hasAnchor" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span> Smoking:<a href="results.html#smoking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.1.3</span> Smoking<a href="results.html#smoking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="finalproj_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>We can see that the smoking rates for West Virginia, Kentucky, and Louisiana are the highest. In prior heat maps, we’ve shown that West Virginia has one of the lowest household income and college education rates, as it is mostly dominated by working class. In fact, the 12 “Tobacco Nation” states (Alabama, Arkansas, Indiana, Kentucky, Louisiana, Michigan, Mississippi, Missouri, Ohio, Oklahoma, Tennessee, and West Virginia) all have a high smoking rate, as they share the similar challenges of low income, a paucity of infrastructure and health-care resources, as well as a lack of anti-tobacco policies according to <a href="https://truthinitiative.org/tobacconation">this article</a>. Utah has the lowest smoking rate, partly due to a large <a href="https://news.gallup.com/poll/167771/smoking-rate-lowest-utah-highest-kentucky.aspx">religious population</a>.</p>
 </div>
 <div id="cancer" class="section level3 hasAnchor" number="4.1.4">
-<h3><span class="header-section-number">4.1.4</span> Cancer:<a href="results.html#cancer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.1.4</span> Cancer<a href="results.html#cancer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="finalproj_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>We can see that South Dakota and Iowa have (reportedly) low cancer rates. <a href="https://drgnews.com/2020/11/17/new-report-south-dakota-among-top-states-for-early-diagnosis-lung-cancer-screening-rates/">South Dakota</a> is one of the top states in terms of early diagnosis of cancer. It also seems strange that Iowa has a low cancer rate, as <a href="https://www.thegazette.com/higher-education/iowa-has-second-highest-cancer-rate-only-state-with-cancer-cases-rising/">this article</a> contradicts this argument. This might be an error in terms of the data points, since the data was reported via a third-party website. For the most part, however, most of the states have very similar cancer rates. Because there is so much variation in cancer causes, it is very difficult to analyze why each states have certain causes of cancer (<a href="https://www.jimmyfund.org/about-us/news-and-publications/announcements/which-u-s--states-have-the-highest-cancer-rates-/" class="uri">https://www.jimmyfund.org/about-us/news-and-publications/announcements/which-u-s--states-have-the-highest-cancer-rates-/</a>).</p>
 </div>
@@ -170,7 +170,7 @@ We can see that the mean and median incomes are very similarly distributed, with
         </div>
       </div>
 <a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="interactive-component-summary-of-correlations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="interactive-component.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

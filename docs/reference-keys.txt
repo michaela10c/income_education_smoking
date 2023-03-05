@@ -9,11 +9,11 @@ cleaning-transformation
 results
 data-exploration
 population-density
-education-percentage-with-college-degrees
+education-percentage-with-collegehigh-school-degrees
 smoking
 cancer
 relationship-between-variables
-interactive-component-summary-of-correlations
+interactive-component
 conclusion
 exploration
 limitations
