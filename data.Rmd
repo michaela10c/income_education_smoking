@@ -2,7 +2,188 @@
 
 ## Sources
 
-## Cleaning / transformation
+In this project, we are using four datasets: [Educational Attainment by US State](https://worldpopulationreview.com/state-rankings/educational-attainment-by-state),  [Average Income by US State](https://worldpopulationreview.com/state-rankings/average-income-by-state ), [Average] [Smoking Rates by US State](https://worldpopulationreview.com/state-rankings/smoking-rates-by-state ), and [Cancer Rates by US State](https://worldpopulationreview.com/state-rankings/cancer-rates-by-state ). All four datasets are collected from [World Population Review](https://worldpopulationreview.com/), but collected via separate links. All four datasets are available to download as CSV files. 
+
+We chose to download these datasets mainly because they come from the same website, and is therefore very convenient to amalgamate together for analysis with very little preprocessing. This also allows modular design, as we can associate each dataset as an indicator to study. 
+
+However, there is a major limitation to using these datasets in terms of originality of sources. All four datasets come from World Population Review, which is a third-party website that posts data from primary sources, rather than from original sources themselves. Moreoever, while the actual year the datasets were collected may be slightly different, World Population Review makes sure that the latest data is scraped from its corresponding primary sources, and there is not much difference when we analyze data within the same time frame. 
+
+This project is meant to be used as a personal project, rather than any class or industry project that requires that all data collected be original. 
 
 ## Missing value analysis
+
+We first analyze whether there are any missing values in each of the datasets. We see that there are no missing data in either of the four datasets. 
+
+```{r include = TRUE}
+library(tidyverse)
+library(gridExtra)
+library(dplyr)
+
+income_data <- read.csv('average_income_by_state.csv')
+education_data <- read.csv('educational_attainment_by_state.csv')
+smoking_data <- read.csv('smoking_rates_by_state.csv')
+cancer_data <- read.csv('cancer_rates_by_state.csv')
+```
+
+
+Income data: 
+```{r include = TRUE}
+g1 <- income_data %>% 
+  is.na() %>% 
+  colSums() %>% 
+  data.frame() %>%
+  ggplot(aes(x = income_data %>% colnames() %>% fct_inorder() %>% fct_rev())) + 
+  ggtitle("Missing Rows in Income Data") + 
+  xlab("Column") + 
+  ylab("# of missing rows") + 
+  coord_flip() 
+
+g2 <- income_data %>% 
+  is.na() %>%
+  sum() %>% 
+  data.frame() %>%
+  ggplot(aes(x = income_data %>% is.na() %>% sum() %>% as.vector())) + 
+  ggtitle("Total # of Missing Values Income Data") + 
+  xlab("# of missing rows") + 
+  coord_flip() + 
+  coord_cartesian(xlim = c(0, 5)) 
+
+grid.arrange(g1, g2, ncol = 1)
+```
+
+
+
+Education data: 
+```{r include = TRUE}
+g1 <- education_data %>% 
+  is.na() %>% 
+  colSums() %>% 
+  data.frame() %>%
+  ggplot(aes(x = education_data %>% colnames() %>% fct_inorder() %>% fct_rev())) + 
+  ggtitle("Missing Values in Education Data") + 
+  xlab("Column") + 
+  ylab("# of missing rows") + 
+  coord_flip() 
+
+g2 <- education_data %>% 
+  is.na() %>%
+  sum() %>% 
+  data.frame() %>%
+  ggplot(aes(x = education_data %>% is.na() %>% sum() %>% as.vector())) + 
+  ggtitle("Total # of Missing Values Education Data") + 
+  xlab("# of missing rows") + 
+  coord_flip() + 
+  coord_cartesian(xlim = c(0, 5)) 
+
+grid.arrange(g1, g2, ncol = 1)
+```
+
+
+
+Smoking data: 
+```{r include = TRUE}
+g1 <- smoking_data %>% 
+  is.na() %>% 
+  colSums() %>% 
+  data.frame() %>%
+  ggplot(aes(x = smoking_data %>% colnames() %>% fct_inorder() %>% fct_rev())) + 
+  ggtitle("Missing Values in Smoking Data") + 
+  xlab("Column") + 
+  ylab("# of missing rows") + 
+  coord_flip() 
+
+g2 <- smoking_data %>% 
+  is.na() %>%
+  sum() %>% 
+  data.frame() %>%
+  ggplot(aes(x = smoking_data %>% is.na() %>% sum() %>% as.vector())) + 
+  ggtitle("Total # of Missing Values Smoking Data") + 
+  xlab("# of missing rows") + 
+  coord_flip() + 
+  coord_cartesian(xlim = c(0, 5)) 
+
+grid.arrange(g1, g2, ncol = 1)
+```
+
+
+
+Cancer data: 
+```{r include = TRUE}
+g1 <- cancer_data %>% 
+  is.na() %>% 
+  colSums() %>% 
+  data.frame() %>%
+  ggplot(aes(x = cancer_data %>% colnames() %>% fct_inorder() %>% fct_rev())) + 
+  ggtitle("Missing Values in Cancer Data") + 
+  xlab("Column") + 
+  ylab("# of missing values") + 
+  coord_flip() 
+
+g2 <- cancer_data %>% 
+  is.na() %>%
+  sum() %>% 
+  data.frame() %>%
+  ggplot(aes(x = cancer_data %>% is.na() %>% sum() %>% as.vector())) + 
+  ggtitle("Total # of Missing Values Cancer Data") + 
+  xlab("# of missing rows") + 
+  coord_flip() + 
+  coord_cartesian(xlim = c(0, 5)) 
+
+grid.arrange(g1, g2, ncol = 1)
+```
+
+
+## Cleaning / transformation
+
+We amalgamate the four datasets together, joining on the `state` column. 
+
+For our analysis, we use the `state` column, the `densityMi`column, the `HouseholdIncome` column from the Average Income data, the `PercentHighSchoolOrHigher` and `PercentBachelorsOrHigher` columns from the Education Attainment data, the `smokingRate` column from the Smoking Rates data, and the `ageAdjustedRate` column from the Cancer Rates data. 
+
+The `ageAdjustedRate`, `smokingRate`, `HouseholdIncome`, and `densityMi` columns are renamed to `cancerCasesPer100K`, `smokingPercentage`, `HouseholdAverageIncome`, and `popDensity` for clarity. 
+
+Population indicators such as `pop2023`, `pop2022`, `pop2020`, `pop2019`, `pop2010`, `growthRate`, `growth`, and `growthSince2010`, which are present in all four datasets, are irrelevant and omitted from our analysis. The absolute populations are not normalized, and the population growth metrics are irrelevant for this analysis. 
+
+We also removed District of Columbia since it is not an official state. 
+
+```{r include = TRUE}
+# Remove unneeded columns 
+population_data <- income_data %>% select(c("state", "densityMi"))
+
+income_data <- income_data %>% select(-c("fips", "densityMi", "pop2023", "pop2022", "pop2020", "pop2019", "pop2010", "growthRate", "growth", "growthSince2010"))
+
+education_data <- education_data %>% select(-c("fips", "densityMi", "pop2023", "pop2022", "pop2020", "pop2019", "pop2010", "growthRate", "growth", "growthSince2010"))
+
+smoking_data <- smoking_data %>% select(-c("fips", "densityMi", "pop2023", "pop2022", "pop2020", "pop2019", "pop2010", "growthRate", "growth", "growthSince2010"))
+
+cancer_data <- cancer_data %>% select(-c("fips", "densityMi", "pop2023", "pop2022", "pop2020", "pop2019", "pop2010", "growthRate", "growth", "growthSince2010", "caseCount"))
+```
+
+
+```{r include = TRUE}
+# Merge datasets together 
+df <- merge(population_data, income_data, by = 'state')
+df <- merge(df, education_data, by = 'state')
+df <- merge(df, smoking_data, by = 'state')
+df <- merge(df, cancer_data, by = 'state')
+
+# Change names of certain variables 
+names(df)[names(df) == 'smokingRate'] <- 'smokingPercentage'
+names(df)[names(df) == 'ageAdjustedRate'] <- 'cancerCasesPer100K'
+names(df)[names(df) == 'HouseholdIncome'] <- 'HouseholdAverageIncome'
+names(df)[names(df) == 'densityMi'] <- 'popDensity'
+
+# Add state abbreviations (for simplicity of graphs)
+states <- data.frame(state_name = state.name, abb = state.abb)
+
+df <- df %>%
+  full_join(states, c('state' = 'state_name')) 
+
+# df <- df %>% mutate_if(is.factor,
+#           fct_explicit_na,
+#           na_level = "DC")
+
+df <- df %>% filter(state != 'District of Columbia')
+
+head(df, 10)
+```
 

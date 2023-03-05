@@ -1,2 +1,21 @@
 # Conclusion
 
+## Exploration
+
+In summary, we looked at four types of indicators - Income, Education, Smoking, and Cancer - within 50 US states. After looking at the data, we see that income, education (in particular, college education), and smoking rates are very closely correlated, as higher income states can better afford higher education, and states that have better higher education attainment rates have lower prevalence of smokers. This is consistent with the fact that states with higher average and median household income have a lower prevalence of smokers, and is not the same as earlier research which suggested that low income countries have lower rates of smoking (because of Simpson's Paradox). Our analysis did not show strong correlation between smoking and cancer, mostly because of the variability of different types of cancers, as well as the causes of cancers; this does not mean that smoking is not a factor of cancer (it is still an important factor), but it is just one of many causes of certain types of cancer. 
+
+## Limitations
+
+Our analysis is very general, and does not break down into subcategories; for instance, the Smoking dataset does not separate into different types of smoking (cigarettes, cigars, E-cigs, etc.); in addition, the Cancer data does not go into more detail about the specific types of cancer; moreover, neither the Smoking or Cancer data separates by gender or age group. Our project does not involve any historical data. It is also worth noting that we can use many more socioeconomic indicators other than household income and education to analyze with smoking and cancer. Moreoever, we would have to go to separate websites to add more indicators to analyze, which makes this project unscalable. 
+
+As a disclaimer, this project is meant to be used as a personal project, rather than any class or industry project that requires that all data collected be original. 
+
+## Future Work
+
+One thing that could improve our analysis is to find primary sources that have original data, rather than third-party websites that report data. In addition to income and education level, we could leverage using more socioeconomic indicators to analyze with smoking (e.g., employment). With a large amount of socioeconomic indicators, we could also leverage sources such as [ESRI](https://www.esri.com/en-us/home), rather than using one separate website for each indicator. 
+
+## Lessons Learned
+
+In this project, we have learned how to amalgamate different datasets and use each dataset as a separate variable, inspect the each variable separately in each geographical region, and analyze the statistical relationships between variables and using plots to visualize them. We also learned that just because a group has a certain correlation with a variable does not mean that its subgroups will have the same correlation with that variable - it could either have no relationship or be reversed (Simpson's Paradox). A variable can sometimes be too general to analyze - Cancer Rate can be split into multiple different types of cancer, and has a wide variability of causes other than smoking (e.g. obesity, alcoholism, age, etc.). 
+
+More importantly, this project is used to send a reminder to the audience to **stay away from cigarette smoking at all times** regardless of background such as education or income. 
