@@ -65,7 +65,7 @@ plot_usmap(data = df, values = "cancerCasesPer100K", color = "black") +
 We can see that South Dakota and Iowa have (reportedly) low cancer rates. [South Dakota](https://drgnews.com/2020/11/17/new-report-south-dakota-among-top-states-for-early-diagnosis-lung-cancer-screening-rates/) is one of the top states in terms of early diagnosis of cancer. It also seems strange that Iowa has a low cancer rate, as [this article](https://www.thegazette.com/higher-education/iowa-has-second-highest-cancer-rate-only-state-with-cancer-cases-rising/) contradicts this argument. This might be an error in terms of the data points, since the data was reported via a third-party website. For the most part, however, most of the states have very similar cancer rates. Because there is so much variation in cancer causes, it is very difficult to analyze why each states have certain causes of cancer (https://www.jimmyfund.org/about-us/news-and-publications/announcements/which-u-s--states-have-the-highest-cancer-rates-/). 
 
 
-## 4.2 Relationship between Variables
+## Relationship between Variables
 
 ```{r}
 df_select <- df %>% 
