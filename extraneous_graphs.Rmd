@@ -2,6 +2,30 @@
 
 These are some graphs we considered, but ultimately did not decide to have, since they do not best contribute to the overall story. While these graphs do show the distribution data of each variable, we are more interested in analyzing each region geographically with respect to each variable. 
 
+```{r}
+library(jsonlite)
+
+df %>% 
+  mutate(state = abb, value = popDensity) %>% 
+  slice_max(n = 5, order_by = -value) %>% 
+  select(c("state", "value")) %>%
+  toJSON(dataframe = 'rows', pretty = T) 
+```
+
+
+Population Density:
+```{r}
+df %>%
+  ggplot(aes(x = fct_reorder(abb, popDensity), y = popDensity)) +
+  geom_col(width = 0.7) +
+  ggtitle("Population density per square-mile") +
+  xlab("State") +
+  ylab("Population density per square-mile") +
+  geom_bar(stat = "identity") +
+  coord_flip()
+```
+
+
 Income (Average and Median):
 ```{r fig.height = 5, fig.width = 5}
 df %>%
