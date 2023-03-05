@@ -161,7 +161,7 @@ Below are the top or bottom 5 US states for each indicator:
 
 
 <meta charset="utf-8">
-<title>NYUJobs></title>
+<title>Income, Education, Smoking and Cancer></title>
 <style type="text/css">
 			h1 {color:black;}		/* CSS styling */
 			p {color:blue;}
@@ -173,45 +173,58 @@ Below are the top or bottom 5 US states for each indicator:
  </h3>
 <!-- Add buttons -->
 
-<div class="population_density">
-  <button onclick="update(population_density_top_5)">Top 5 Densely Populated States</button>
-  <button onclick="update(population_density_bottom_5)">Bottom 5 Densely Populated States</button>
-</div>
-
-<div class="avg_income">
-  <button onclick="update(avg_income_top_5)">Top 5 States in Average Income</button>
-  <button onclick="update(avg_income_bottom_5)">Bottom 5 States in Average Income</button>
-</div>
-
-<div class="median_income">
-  <button onclick="update(median_income_top_5)">Top 5 States in Median Income</button>
-  <button onclick="update(median_income_bottom_5)">Bottom 5 States in Median Income</button>
-</div>
-
-
-<div class="education_highschool">
-  <button onclick="update(education_highschool_top_5)">Top 5 States in HS Graduation</button>
-  <button onclick="update(education_highschool_bottom_5)">Bottom 5 States in HS Graduation</button>
-</div>
-
-<div class="education_college">
-  <button onclick="update(education_college_top_5)">Top 5 States in College Graduation</button>
-  <button onclick="update(education_college_bottom_5)">Bottom 5 States in College Graduation</button>
-</div>
-  
-<div class="smoking_rates">
-  <button onclick="update(smoking_rates_top_5)">Top 5 States in Smoking Rates</button>
-  <button onclick="update(smoking_rates_bottom_5)">Bottom 5 States in Smoking Rates</button>
-</div>
-
-<div class="cancer_rates">
-  <button onclick="update(cancer_rates_top_5)">Top 5 States in Cancer Rates</button>
-  <button onclick="update(cancer_rates_bottom_5)">Bottom 5 States in Cancer Rates</button>
-</div>
-
 
 <!-- Create a div where the graph will take place -->
-<div id="d3try" ></div>
+
+<h2>Population Density (per square-mile)</h2>
+<div class="population_density">
+  <button onclick="update(population_density_top_5, population_density)">Top 5</button>
+  <button onclick="update(population_density_bottom_5, population_density)">Bottom 5</button>
+</div>
+<div id="population_density" ></div>
+
+<h2>Average Household Income ($)</h2>
+<div class="avg_income">
+  <button onclick="update(avg_income_top_5, avg_income)">Top 5</button>
+  <button onclick="update(avg_income_bottom_5, avg_income)">Bottom 5</button>
+</div>
+<div id="avg_income" ></div>
+
+<h2>Median Household Income ($)</h2>
+<div class="median_income">
+  <button onclick="update(median_income_top_5, median_income)">Top 5</button>
+  <button onclick="update(median_income_bottom_5, median_income)">Bottom 5</button>
+</div>
+<div id="median_income" ></div>
+
+<h2>High School Graduation Rate (%)</h2>
+<div class="education_highschool">
+  <button onclick="update(education_highschool_top_5, education_highschool)">Top 5</button>
+  <button onclick="update(education_highschool_bottom_5, education_highschool)">Bottom 5</button>
+</div>
+<div id="education_highschool" ></div>
+
+<h2>College Graduation Rate (%)</h2>
+<div class="education_college">
+  <button onclick="update(education_college_top_5, education_college)">Top 5</button>
+  <button onclick="update(education_college_bottom_5, education_college)">Bottom 5</button>
+</div>
+<div id="education_college" ></div>
+
+<h2>Smoking Rate (%)</h2>
+<div class="smoking_rates">
+  <button onclick="update(smoking_rates_top_5, smoking_rates)">Top 5</button>
+  <button onclick="update(smoking_rates_bottom_5, smoking_rates)">Bottom 5</button>
+</div>
+<div id="smoking_rates" ></div>
+
+<h2>Cancer Cases per 100K Population</h2>
+<div class="cancer_rates">
+  <button onclick="update(cancer_rates_top_5, cancer_rates)">Top 5</button>
+  <button onclick="update(cancer_rates_bottom_5, cancer_rates)">Bottom 5</button>
+</div>
+<div id="cancer_rates" ></div>
+
 <script>
 // create  data_set
 var population_density_top_5 = [   
@@ -526,8 +539,8 @@ var margin = {top: 30, right: 30, bottom: 70, left: 60},
     width = 800 - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
-var svg = d3.select("#d3try")
+function init(div_id) {
+  svg = d3.select("#" + div_id)
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -535,23 +548,39 @@ var svg = d3.select("#d3try")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")")
    .append("g", id ='circ');
-  
-// Initialize the X axis
-var x = d3.scaleBand()
-  .range([ 0, width ])
-  .padding(0.2);
-var xAxis = svg.append("g")
-  .attr("transform", "translate(0," + height + ")")
 
-// Initialize the Y axis
-var y = d3.scaleLinear()
-  .range([ height, 0]);
-var yAxis = svg.append("g")
-  .attr("class", "myYaxis")
+  // Initialize the X axis
+  var x = d3.scaleBand()
+    .range([ 0, width ])
+    .padding(0.2);
+  var xAxis = svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+  
+  // Initialize the Y axis
+  var y = d3.scaleLinear()
+    .range([ height, 0]);
+  var yAxis = svg.append("g")
+    .attr("class", "myYaxis")
+    
+  return {'svg': svg, 'x': x, 'xAxis': xAxis, 'y': y, 'yAxis': yAxis};
+}
+
+var population_density = init('population_density')
+var avg_income = init('avg_income')
+var median_income = init('median_income')
+var education_highschool = init('education_highschool')
+var education_college = init('education_college')
+var smoking_rates = init('smoking_rates')
+var cancer_rates = init('cancer_rates')
 
 // A function that create / update the plot for a given variable:
-function update(data) {
-
+function update(data, axis_data) {
+  svg = axis_data.svg
+  x = axis_data.x
+  xAxis = axis_data.xAxis
+  y = axis_data.y
+  yAxis = axis_data.yAxis
+  
   // Update the X axis
   x.domain(data.map(function(d) { return d.state; }))
   xAxis.call(d3.axisBottom(x))
@@ -576,7 +605,7 @@ function update(data) {
       .attr("height", function(d) { return height - y(d.value); })
       .attr("fill", "#7b6888")
 
-var rect = svg.selectAll("rect").on("mouseover", function(d, i) {
+  var rect = svg.selectAll("rect").on("mouseover", function(d, i) {
                //highlight
                  d3.select(this).style("fill","#BA5C25");
                 })
@@ -588,11 +617,38 @@ var rect = svg.selectAll("rect").on("mouseover", function(d, i) {
   u
     .exit()
     .remove()
-    
-      
-    
+   
+  <!-- g.append("g") -->
+  <!--  .attr("transform", "translate(0," + height + ")") -->
+  <!--  .call(d3.axisBottom(xScale)) -->
+  <!--  .append("text") -->
+  <!--  .attr("y", height - 250) -->
+  <!--  .attr("x", width - 100) -->
+  <!--  .attr("text-anchor", "end") -->
+  <!--  .attr("stroke", "black") -->
+  <!--  .text(xlabel); -->
+
+  <!-- g.append("g") -->
+  <!--  .call(d3.axisLeft(yScale) -->
+  <!--  .tickFormat(function(d){ -->
+  <!--      return "$" + d; -->
+  <!--  }).ticks(10)) -->
+  <!--  .append("text") -->
+  <!--  .attr("transform", "rotate(-90)") -->
+  <!--  .attr("y", 6) -->
+  <!--  .attr("dy", "-5.1em") -->
+  <!--  .attr("text-anchor", "end") -->
+  <!--  .attr("stroke", "black") -->
+  <!--  .text(ylabel); -->
 }
-update(data1)
+
+update(population_density_top_5, population_density)
+update(avg_income_top_5, avg_income)
+update(median_income_top_5, median_income)
+update(education_highschool_top_5, education_highschool)
+update(education_college_top_5, education_college)
+update(smoking_rates_top_5, smoking_rates)
+update(cancer_rates_top_5, cancer_rates)
 
 </script>
 </body>
