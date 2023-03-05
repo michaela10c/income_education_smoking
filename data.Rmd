@@ -2,7 +2,7 @@
 
 ## Sources
 
-In this project, we are using four datasets: [Educational Attainment by US State](https://worldpopulationreview.com/state-rankings/educational-attainment-by-state),  [Average Income by US State](https://worldpopulationreview.com/state-rankings/average-income-by-state ), [Average] [Smoking Rates by US State](https://worldpopulationreview.com/state-rankings/smoking-rates-by-state ), and [Cancer Rates by US State](https://worldpopulationreview.com/state-rankings/cancer-rates-by-state ). All four datasets are collected from [World Population Review](https://worldpopulationreview.com/), but collected via separate links. All four datasets are available to download as CSV files. 
+In this project, we are using four datasets: [Educational Attainment by US State](https://worldpopulationreview.com/state-rankings/educational-attainment-by-state),  [Average/Median Income by US State](https://worldpopulationreview.com/state-rankings/average-income-by-state ), [Average Smoking Rates by US State](https://worldpopulationreview.com/state-rankings/smoking-rates-by-state ), and [Cancer Rates by US State](https://worldpopulationreview.com/state-rankings/cancer-rates-by-state ). All four datasets are collected from [World Population Review](https://worldpopulationreview.com/), but collected via separate links. All four datasets are available to download as CSV files. 
 
 We chose to download these datasets mainly because they come from the same website, and is therefore very convenient to amalgamate together for analysis with very little preprocessing. This also allows modular design, as we can associate each dataset as an indicator to study. 
 
@@ -137,7 +137,7 @@ grid.arrange(g1, g2, ncol = 1)
 
 We amalgamate the four datasets together, joining on the `state` column. 
 
-For our analysis, we use the `state` column, the `densityMi`column, the `HouseholdIncome` column from the Average Income data, the `PercentHighSchoolOrHigher` and `PercentBachelorsOrHigher` columns from the Education Attainment data, the `smokingRate` column from the Smoking Rates data, and the `ageAdjustedRate` column from the Cancer Rates data. 
+For our analysis, we use the `state` column, the `densityMi`column, the `HouseholdIncome` column from the Income data, the `PercentHighSchoolOrHigher` and `PercentBachelorsOrHigher` columns from the Education Attainment data, the `smokingRate` column from the Smoking Rates data, and the `ageAdjustedRate` column from the Cancer Rates data. 
 
 The `ageAdjustedRate`, `smokingRate`, `HouseholdIncome`, and `densityMi` columns are renamed to `cancerCasesPer100K`, `smokingPercentage`, `HouseholdAverageIncome`, and `popDensity` for clarity. 
 
