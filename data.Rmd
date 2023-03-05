@@ -8,8 +8,6 @@ We chose to download these datasets mainly because they come from the same websi
 
 However, there is a major limitation to using these datasets in terms of originality of sources. All four datasets come from World Population Review, which is a third-party website that posts data from primary sources, rather than from original sources themselves. Moreoever, while the actual year the datasets were collected may be slightly different, World Population Review makes sure that the latest data is scraped from its corresponding primary sources, and there is not much difference when we analyze data within the same time frame. 
 
-This project is meant to be used as a personal project, rather than any class or industry project that requires that all data collected be original. 
-
 ## Missing value analysis
 
 We first analyze whether there are any missing values in each of the datasets. We see that there are no missing data in either of the four datasets. 
