@@ -183,7 +183,5 @@ df <- df %>%
 #           na_level = "DC")
 
 df <- df %>% filter(state != 'District of Columbia')
-
-head(df, 10)
 ```
 
