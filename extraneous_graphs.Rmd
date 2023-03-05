@@ -14,7 +14,8 @@ These are some graphs we considered, but ultimately did not decide to have, sinc
 
 
 Population Density:
-```{r}
+
+```{r fig.height = 5, fig.width = 5}
 df %>%
   ggplot(aes(x = fct_reorder(abb, popDensity), y = popDensity)) +
   geom_col(width = 0.7) +
@@ -27,6 +28,7 @@ df %>%
 
 
 Average Income:
+
 ```{r fig.height = 5, fig.width = 5}
 df %>%
   ggplot(aes(x = fct_reorder(abb, HouseholdAverageIncome), y = HouseholdAverageIncome / 1000)) +
@@ -39,7 +41,8 @@ df %>%
 ```
 
 Median Income:
-```{r}
+
+```{r fig.height = 5, fig.width = 5}
 df %>%
   ggplot(aes(x = fct_reorder(abb, HouseholdMedianIncome), y = HouseholdMedianIncome / 1000)) +
   geom_col(width = 0.7) +
@@ -53,6 +56,7 @@ df %>%
 
 
 High School Education:
+
 ```{r fig.height = 5, fig.width = 5}
 df %>%
   ggplot(aes(x = fct_reorder(abb, PercentHighSchoolOrHigher), y = PercentHighSchoolOrHigher)) +
@@ -65,7 +69,8 @@ df %>%
 ```
 
 College Education:
-```{r}
+
+```{r fig.height = 5, fig.width = 5}
 df %>%
   ggplot(aes(x = fct_reorder(abb, PercentBachelorsOrHigher), y = PercentBachelorsOrHigher)) +
   ggtitle("Education Attainment: College") +
@@ -78,6 +83,7 @@ df %>%
 
 
 Smoking:
+
 ```{r fig.height = 5, fig.width = 5}
 df %>%
   ggplot(aes(x = fct_reorder(abb, smokingPercentage), y = smokingPercentage)) +
@@ -90,6 +96,7 @@ df %>%
 
 
 Cancer:
+
 ```{r fig.height = 5, fig.width = 5}
 df %>%
   ggplot(aes(x = fct_reorder(abb, cancerCasesPer100K), y =cancerCasesPer100K)) +
